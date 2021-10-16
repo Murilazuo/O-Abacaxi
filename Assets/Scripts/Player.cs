@@ -121,8 +121,8 @@ public class Player : MonoBehaviour
                 Destroy(collision.gameObject);
                 break;
             case "Reverse":
-              //  if (xAxis) RevertX();
-            //    else RevertY();
+                speed = speed.normalized * -1 * baseSpeed;
+                Reverse();
                 break;
             case "Wall":
                 canChangeState = false;
