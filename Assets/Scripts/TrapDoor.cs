@@ -6,8 +6,11 @@ public class TrapDoor : MonoBehaviour
 {
     [SerializeField] Sprite open, close;
 
-    SpriteRenderer spr;
+    public SpriteRenderer spr;
     Collider2D col;
+    public float timeTrapDoor;
+    private bool canOpenTrap = true;
+    bool openTrapDoor;
     void Start()
     {
         spr = GetComponent<SpriteRenderer>();
@@ -15,21 +18,52 @@ public class TrapDoor : MonoBehaviour
 
 
     }
-    private void Update()
+    public void Teste()
     {
-        DoorState();
+        if (canOpenTrap) 
+        {
+            StartCoroutine("DoorState");
+        }
+        //DoorState();
     }
-    void DoorState()
+    IEnumerator DoorState()
     {
-        if (GameManager.active)
+        openTrapDoor = !openTrapDoor;
+        yield return new WaitForSeconds(timeTrapDoor);
+        if (openTrapDoor)
         {
             spr.sprite = open;
-            col.enabled = false;
+            //col.enabled = false;
         }
         else
         {
             spr.sprite = close;
-            col.enabled = true;
+            //col.enabled = true;
+        }
+    }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player")) 
+        {
+            if (spr.sprite == open)
+            {
+                canOpenTrap = false;
+            }
+            else 
+            {
+                canOpenTrap = true;
+            }
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+
+                canOpenTrap = true;
+          
+
+            
         }
     }
 

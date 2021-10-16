@@ -23,8 +23,19 @@ public class GameManager : MonoBehaviour
         Platform[] platforms = FindObjectsOfType<Platform>();
         foreach(Platform p in platforms)
         {
+            
             p.Revert();
         }
+        Teste();
     }
 
+    static void Teste()
+    {
+        TrapDoor[] platforms = FindObjectsOfType<TrapDoor>();
+        foreach (TrapDoor p in platforms)
+        {
+
+            p.Teste();
+        }
+    }
 }

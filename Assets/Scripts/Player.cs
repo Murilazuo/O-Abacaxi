@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     private bool xAxis;
 
     bool hole = false;
+    bool canChangeState = true;
 
     Rigidbody2D rig;
     GameManager gameManager;
@@ -69,6 +70,7 @@ public class Player : MonoBehaviour
     
     void RevertX()
     {
+        
         if (lastDir.y == 0)
         {
             lastDir.y = 1;
@@ -84,7 +86,10 @@ public class Player : MonoBehaviour
         else speed.x = -speed.x;
 
         anim.SetBool("xAxis", xAxis);
-        GameManager.ChangeState(xAxis);
+        if (canChangeState)
+        {
+            GameManager.ChangeState(xAxis);
+        }
     }
     void Stop()
     {
@@ -107,7 +112,9 @@ public class Player : MonoBehaviour
         else speed.y = -speed.y;
 
         anim.SetBool("xAxis", xAxis);
+        if (canChangeState) { 
         GameManager.ChangeState(xAxis);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -123,9 +130,18 @@ public class Player : MonoBehaviour
                 else RevertY();
                 break;
             case "Wall":
+                canChangeState = false;
                 Stop();
                 break;
-            
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        switch (collision.gameObject.tag)
+        {
+            case "Wall":
+                canChangeState = true;
+                break;
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -142,6 +158,11 @@ public class Player : MonoBehaviour
         switch (collision.tag)
         {
             case "Hole":
+                /*var trapDoor = collision.GetComponent<TrapDoor>();
+                if (trapDoor != null) 
+                {
+                    trapDoor.spr.name == ""
+                }*/
                 if (followPlatform.platform == null) Hit();
                 break;
         }
