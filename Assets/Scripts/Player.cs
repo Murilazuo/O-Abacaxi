@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Vector2 speed;
     private bool xAxis;
 
+    bool hole = false;
 
     Rigidbody2D rig;
     FollowPlatform followPlatform;
@@ -77,6 +79,7 @@ public class Player : MonoBehaviour
                 else RevertY();
                 break;
             case "Bullet":
+                Hit();
                 Destroy(collision.gameObject);
                 break;
             
@@ -90,6 +93,20 @@ public class Player : MonoBehaviour
                 speed = Vector2.zero;
                 break;
         }
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        switch (collision.tag)
+        {
+            case "Hole":
+                if (followPlatform.platform == null) Hit();
+                break;
+        }
+    }
+
+    private void Hit()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     
 }
