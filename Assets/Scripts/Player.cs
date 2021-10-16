@@ -158,11 +158,6 @@ public class Player : MonoBehaviour
         switch (collision.tag)
         {
             case "Hole":
-                /*var trapDoor = collision.GetComponent<TrapDoor>();
-                if (trapDoor != null) 
-                {
-                    trapDoor.spr.name == ""
-                }*/
                 if (followPlatform.platform == null) Hit();
                 break;
         }

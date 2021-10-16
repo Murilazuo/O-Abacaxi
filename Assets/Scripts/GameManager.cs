@@ -26,16 +26,10 @@ public class GameManager : MonoBehaviour
             
             p.Revert();
         }
-        Teste();
-    }
-
-    static void Teste()
-    {
-        TrapDoor[] platforms = FindObjectsOfType<TrapDoor>();
-        foreach (TrapDoor p in platforms)
+        TrapDoor[] traps = FindObjectsOfType<TrapDoor>();
+        foreach (TrapDoor trap in traps)
         {
-
-            p.Teste();
+            trap.ChangerTrapState();
         }
     }
 }

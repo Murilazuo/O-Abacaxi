@@ -7,64 +7,52 @@ public class TrapDoor : MonoBehaviour
     [SerializeField] Sprite open, close;
 
     public SpriteRenderer spr;
-    Collider2D col;
     public float timeTrapDoor;
-    private bool canOpenTrap = true;
-    bool openTrapDoor;
+    [SerializeField]private bool canOpenTrap = true;
+    [SerializeField] bool openTrapDoor;
     void Start()
     {
         spr = GetComponent<SpriteRenderer>();
-        col = GetComponent<Collider2D>();
 
-
+        TrapState();
     }
-    public void Teste()
+    public void ChangerTrapState()
     {
         if (canOpenTrap) 
         {
-            StartCoroutine("DoorState");
+            openTrapDoor = !openTrapDoor;
         }
-        //DoorState();
+
+        TrapState();
     }
-    IEnumerator DoorState()
+
+    void TrapState()
     {
-        openTrapDoor = !openTrapDoor;
-        yield return new WaitForSeconds(timeTrapDoor);
         if (openTrapDoor)
         {
             spr.sprite = open;
-            //col.enabled = false;
+            gameObject.tag = "Hole";
         }
         else
         {
             spr.sprite = close;
-            //col.enabled = true;
+            gameObject.tag = "Untagged";
         }
     }
-    private void OnCollisionStay2D(Collision2D collision)
+
+    private void OnTriggerStay2D(Collider2D collision)
     {
+        print("Test");
         if (collision.gameObject.CompareTag("Player")) 
         {
-            if (spr.sprite == open)
-            {
                 canOpenTrap = false;
-            }
-            else 
-            {
-                canOpenTrap = true;
-            }
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
-        {
-
-                canOpenTrap = true;
-          
-
-            
-        }
+            canOpenTrap = true;   
+        
     }
 
 }

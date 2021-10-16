@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8804153651755771453}
   m_Layer: 0
   m_Name: Trapdoor
-  m_TagString: Hole
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,8 +96,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 237e8bedd55456b46bbbc7299f65fa9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  open: {fileID: -6057101641252905267, guid: 489202a3554aa644e8d08502320518a7, type: 3}
-  close: {fileID: 2259933023343272514, guid: 489202a3554aa644e8d08502320518a7, type: 3}
+  open: {fileID: 2259933023343272514, guid: 489202a3554aa644e8d08502320518a7, type: 3}
+  close: {fileID: -6057101641252905267, guid: 489202a3554aa644e8d08502320518a7, type: 3}
+  spr: {fileID: 0}
+  timeTrapDoor: 0
+  openTrapDoor: 1
 --- !u!61 &8804153651755771453
 BoxCollider2D:
   m_ObjectHideFlags: 0
