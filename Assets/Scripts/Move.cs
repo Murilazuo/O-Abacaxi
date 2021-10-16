@@ -55,7 +55,6 @@ public class Move : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        print("test");
         switch (collision.gameObject.tag)
         {
             case "Wall":
@@ -63,6 +62,19 @@ public class Move : MonoBehaviour
                 else RevertY();
                 break;
             case "Bullet":
+                Destroy(collision.gameObject);
+                break;
+            
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        switch (collision.tag)
+        {
+            case "Nest":
+                speedX = 0;
+                speedY = 0;
+
                 break;
         }
     }

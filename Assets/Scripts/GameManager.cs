@@ -4,20 +4,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static bool state;
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public static bool active;
     public static void ChangeState()
     {
-        state = !state;
+        active = !active;
     }
     
 }

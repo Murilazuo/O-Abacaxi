@@ -5,7 +5,6 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     Color openColor, closeColor;
-    bool isOpen;
 
     SpriteRenderer spr;
     Collider2D col;
@@ -20,13 +19,11 @@ public class Door : MonoBehaviour
     }
     private void Update()
     {
-        isOpen = GameManager.state;
-
         DoorState();
     }
     void DoorState()
     {
-        if (isOpen)
+        if (GameManager.active)
         {
             spr.color = openColor;
             col.enabled = false;

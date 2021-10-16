@@ -12,14 +12,12 @@ public class Shooter : MonoBehaviour
     
     private int idState = 0;
     private float timer = 0;
-    bool active;
    
 
     void Update()
     {
-        active = GameManager.state;
 
-        if (active) idState = 1;
+        if (GameManager.active) idState = 1;
         else idState = 0;
 
         if(timer > bulletTime[idState])
