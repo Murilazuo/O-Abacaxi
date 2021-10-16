@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private float baseSpeed;
     [SerializeField] private Vector2 speed;
+
+    [SerializeField]private Vector2 lastDir;
     private bool xAxis;
 
     bool hole = false;
@@ -25,7 +27,9 @@ public class Player : MonoBehaviour
         inputY = KeyCode.W;
         inputStop = KeyCode.S;
 
-        Spawn();
+        lastDir = Vector2.one;
+
+        //Spawn();
 
     }
     void Spawn()
@@ -52,17 +56,26 @@ public class Player : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        Vector2 extraSpeed  =Vector2.zero;
+        Vector2 extraSpeed  = Vector2.zero;
         if (followPlatform.platform != null)
-            //extraSpeed = followPlatform.rig.velocity;
+            extraSpeed = followPlatform.rig.velocity;
         rig.velocity = speed + extraSpeed;
     }
+    
     void RevertX()
     {
+        if (lastDir.y == 0)
+        {
+            lastDir.y = 1;
+        }
+        else
+        {
+            lastDir.y *= -1 ;
+        }
 
         xAxis = true;
         speed.y = 0;
-        if (speed.x == 0) speed.x = baseSpeed;
+        if (speed.x == 0) speed.x = baseSpeed * lastDir.x;
         else speed.x = -speed.x;
 
         GameManager.ChangeState(xAxis);
@@ -73,9 +86,18 @@ public class Player : MonoBehaviour
     }
     internal void RevertY()
     {
+        if (lastDir.x == 0)
+        {
+            lastDir.x = 1;
+        }
+        else
+        {
+            lastDir.x *= -1;
+        }
+
         xAxis = false;
         speed.x = 0;
-        if (speed.y == 0) speed.y = baseSpeed;
+        if (speed.y == 0) speed.y = baseSpeed * lastDir.y;
         else speed.y = -speed.y;
         GameManager.ChangeState(xAxis);
     }
