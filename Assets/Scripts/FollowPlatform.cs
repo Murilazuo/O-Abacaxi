@@ -4,14 +4,38 @@ using UnityEngine;
 
 public class FollowPlatform : MonoBehaviour
 {
-    internal Vector2 extraSpeed;
+    internal Platform platform;
+    internal Rigidbody2D rig;
 
-    private void OnCollisionStay(Collision collision)
+    Vector2 extraSpeed;
+
+
+    private void Start()
     {
-        if (collision.collider.CompareTag("Platform"))
-        {
-            extraSpeed = collision.gameObject.GetComponent<Platform>().platformSpeed;
-        }
-        else extraSpeed = Vector2.zero;
+        rig = GetComponent<Rigidbody2D>();
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Platform"))
+        {
+            platform = collision.GetComponent<Platform>();
+            rig = collision.GetComponent<Rigidbody2D>();
+            
+        }
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Platform"))
+        {
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Platform"))
+        {
+            rig = null;
+            platform = null;
+        }
+    }
+
 }

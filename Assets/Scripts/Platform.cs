@@ -7,10 +7,8 @@ public class Platform : MonoBehaviour
     [SerializeField] private float speed = 1;
     [SerializeField] private Vector2 direction;
 
-    public Vector2 platformSpeed;
-
     private Rigidbody2D rig;
-
+    private FollowPlatform followPlatform;
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();
@@ -20,7 +18,6 @@ public class Platform : MonoBehaviour
     private void FixedUpdate()
     {
         rig.velocity = direction * speed;
-        platformSpeed = rig.velocity;
     }
 
     public void Revert()

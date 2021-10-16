@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static bool active;
-    public static void ChangeState()
+    public static void ChangeState(bool xAxis)
     {
         active = !active;
 

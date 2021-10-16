@@ -245,9 +245,10 @@ GameObject:
   - component: {fileID: 70632919}
   - component: {fileID: 70632922}
   - component: {fileID: 70632923}
+  - component: {fileID: 70632924}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -291,7 +292,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -377,6 +378,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.13542922, y: 0.13164915}
   m_EdgeRadius: 0
+--- !u!114 &70632924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70632918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b8bca61c2a04274abd54ccdf1bbecfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &155488074
 GameObject:
   m_ObjectHideFlags: 0
@@ -950,6 +963,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   direction: {x: 1, y: 0}
+  platformSpeed: {x: 0, y: 0}
 --- !u!61 &1230621916
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1265,7 +1279,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1558036238}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.65, y: 0.15, z: 0}
+  m_LocalPosition: {x: 1.91, y: 5.21, z: 0}
   m_LocalScale: {x: 19.834099, y: 18.792742, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
