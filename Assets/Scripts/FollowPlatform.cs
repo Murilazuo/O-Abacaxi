@@ -7,8 +7,6 @@ public class FollowPlatform : MonoBehaviour
     internal Platform platform;
     internal Rigidbody2D rig;
 
-    Vector2 extraSpeed;
-
 
     private void Start()
     {
@@ -18,6 +16,7 @@ public class FollowPlatform : MonoBehaviour
     {
         if (collision.CompareTag("Platform"))
         {
+            collision.transform.SetParent(transform);
             platform = collision.GetComponent<Platform>();
             rig = collision.GetComponent<Rigidbody2D>();
             
@@ -33,6 +32,7 @@ public class FollowPlatform : MonoBehaviour
     {
         if (collision.CompareTag("Platform"))
         {
+            collision.transform.SetParent(null);
             rig = null;
             platform = null;
         }

@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
     {
         Vector2 extraSpeed  =Vector2.zero;
         if (followPlatform.platform != null)
-            extraSpeed = followPlatform.rig.velocity;
+            //extraSpeed = followPlatform.rig.velocity;
         rig.velocity = speed + extraSpeed;
     }
     void RevertX()
