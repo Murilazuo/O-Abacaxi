@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerColision : MonoBehaviour
 {
-    Move move;
+    Player move;
     private void Start()
     {
-        move = GetComponent<Move>();
+        move = GetComponent<Player>();
     }
 
   

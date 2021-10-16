@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Move : MonoBehaviour
+public class Player : MonoBehaviour
 {
     [SerializeField] private float speed;
     private float speedX, speedY;
@@ -10,10 +10,12 @@ public class Move : MonoBehaviour
 
 
     Rigidbody2D rig;
+    FollowPlatform followPlatform;
     KeyCode inputX, inputY;
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();
+        followPlatform = GetComponent<FollowPlatform>();
 
         inputX = KeyCode.E;
         inputY = KeyCode.R;
@@ -33,7 +35,7 @@ public class Move : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        rig.velocity = new Vector2(speedX, speedY);
+        rig.velocity = new Vector2(speedX, speedY) + followPlatform.extraSpeed;
     }
     void RevertX()
     {
@@ -78,4 +80,5 @@ public class Move : MonoBehaviour
                 break;
         }
     }
+    
 }
