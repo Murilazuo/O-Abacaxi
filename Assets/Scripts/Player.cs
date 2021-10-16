@@ -12,19 +12,29 @@ public class Player : MonoBehaviour
     bool hole = false;
 
     Rigidbody2D rig;
+    GameManager gameManager;
     FollowPlatform followPlatform;
     KeyCode inputX, inputY, inputStop;
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();
         followPlatform = GetComponent<FollowPlatform>();
+        gameManager = GameManager.gameManager;
 
         inputX = KeyCode.D;
         inputY = KeyCode.W;
         inputStop = KeyCode.S;
 
-    }
+        Spawn();
 
+    }
+    void Spawn()
+    {
+        if(gameManager.checkPooint != null)
+        {
+            transform.position = gameManager.checkPooint;
+        }
+    }
     void Update()
     {
         if (Input.GetKeyDown(inputX))
@@ -90,6 +100,7 @@ public class Player : MonoBehaviour
         switch (collision.tag)
         {
             case "Nest":
+                gameManager.checkPooint = collision.gameObject.transform.position;
                 speed = Vector2.zero;
                 break;
         }

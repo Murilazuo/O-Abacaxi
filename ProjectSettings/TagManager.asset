@@ -8,6 +8,8 @@ TagManager:
   - Bullet
   - Nest
   - Platform
+  - Danger
+  - Hole
   layers:
   - Default
   - TransparentFX

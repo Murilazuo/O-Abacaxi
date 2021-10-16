@@ -5,6 +5,17 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static bool active;
+
+    public static GameManager gameManager;
+
+    public Vector2 checkPooint;
+    private void Awake()
+    {
+        if (gameManager == null) gameManager = this;
+        else Destroy(this.gameObject);
+
+        DontDestroyOnLoad(this.gameObject);
+    }
     public static void ChangeState(bool xAxis)
     {
         active = !active;
@@ -15,5 +26,5 @@ public class GameManager : MonoBehaviour
             p.Revert();
         }
     }
-    
+
 }
