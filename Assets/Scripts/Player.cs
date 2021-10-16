@@ -8,21 +8,17 @@ public class Player : MonoBehaviour
     [SerializeField] private float baseSpeed;
     [SerializeField] private Vector2 speed;
 
-    [SerializeField] private Vector2 lastDir;
     [SerializeField] private bool xAxis;
 
-    bool hole = false;
     bool canChangeState = true;
-
-    [SerializeField] private GameObject[] arrowX;
-    [SerializeField] private GameObject[] arrowY;
-
 
     Rigidbody2D rig;
     GameManager gameManager;
     FollowPlatform followPlatform;
     Animator anim;
-    KeyCode inputX, inputY, inputStop;
+    KeyCode inputUp, inputDown, inputRight, inputLeft, inputStop;
+
+    public static bool canMove;
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();
@@ -30,17 +26,17 @@ public class Player : MonoBehaviour
         gameManager = GameManager.gameManager;
         anim = GetComponentInChildren<Animator>();
 
-        inputX = KeyCode.D;
-        inputY = KeyCode.W;
-        inputStop = KeyCode.S;
+        inputUp = KeyCode.W;
+        inputDown = KeyCode.S;
+        inputLeft= KeyCode.A;
+        inputRight = KeyCode.D;
 
-        lastDir = Vector2.one;
+
 
         Spawn();
 
 
 
-        DesactiveArow();
     }
     void Spawn()
     {
@@ -51,20 +47,14 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(inputX))
-        {
-            RevertX();
-        } 
-        else if (Input.GetKeyDown(inputY))
-        {
-            RevertY();
-        } 
-        else if (Input.GetKeyDown(inputStop))
+        if (canMove)
         {
             Stop();
+            return;
         }
 
-        ActiveAroow();
+        Move();
+
 
     }
     private void FixedUpdate()
@@ -72,27 +62,33 @@ public class Player : MonoBehaviour
         Vector2 extraSpeed  = Vector2.zero;
         if (followPlatform.platform != null)
             extraSpeed = followPlatform.rig.velocity;
+
         rig.velocity = speed + extraSpeed;
     }
-    
-    void RevertX()
+    private void Move()
     {
-
-
-        if (lastDir.y == 0)
+        if (Input.GetKeyDown(inputUp))
         {
-            lastDir.y = 1;
+            SetMove(false, Vector2.up);
         }
-        else
+        else if (Input.GetKeyDown(inputDown))
         {
-            lastDir.y *= -1 ;
+            SetMove(false, Vector2.down);
         }
+        if (Input.GetKeyDown(inputLeft))
+        {
+            SetMove(true, Vector2.left);
+        }
+        if (Input.GetKeyDown(inputRight))
+        {
+            SetMove(true, Vector2.right);
+        }
+        
 
-        xAxis = true;
-        speed.y = 0;
-        if (speed.x == 0) speed.x = baseSpeed * lastDir.x;
-        else speed.x = -speed.x;
+    }
 
+    void Reverse()
+    {
         anim.SetBool("xAxis", xAxis);
         if (canChangeState)
         {
@@ -100,58 +96,21 @@ public class Player : MonoBehaviour
         }
 
     }
-    void Stop()
+
+    void SetMove(bool axis, Vector2 direction)
+    {
+        xAxis = axis;
+        speed = direction * baseSpeed;
+
+        Reverse();
+    }
+    
+    public void Stop()
     {
         speed = Vector2.zero;
 
     }
-    internal void RevertY()
-    {
-
-
-        if (lastDir.x == 0)
-        {
-            lastDir.x = 1;
-        }
-        else
-        {
-            lastDir.x *= -1;
-        }
-
-        xAxis = false;
-        speed.x = 0;
-        if (speed.y == 0) speed.y = baseSpeed * lastDir.y;
-        else speed.y = -speed.y;
-
-        anim.SetBool("xAxis", xAxis);
-        if (canChangeState) { 
-        GameManager.ChangeState(xAxis);
-        }
-
-    }
-    void DesactiveArow()
-    {
-        arrowX[0].SetActive(false);
-        arrowX[1].SetActive(false);
-        arrowY[0].SetActive(false);
-        arrowY[1].SetActive(false);
-    }
-    void ActiveAroow()
-    {
-        if (xAxis)
-        {
-            DesactiveArow();
-            if (lastDir.y == 1) arrowY[1].SetActive(true);
-            else if (lastDir.y == -1) arrowY[0].SetActive(true);
-
-        }
-        else
-        {
-            DesactiveArow();
-            if (lastDir.x == 1) arrowY[1].SetActive(true);
-            else if (lastDir.x == -1) arrowY[0].SetActive(true);
-        }
-    }
+   
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -162,8 +121,8 @@ public class Player : MonoBehaviour
                 Destroy(collision.gameObject);
                 break;
             case "Reverse":
-                if (xAxis) RevertX();
-                else RevertY();
+              //  if (xAxis) RevertX();
+            //    else RevertY();
                 break;
             case "Wall":
                 canChangeState = false;
