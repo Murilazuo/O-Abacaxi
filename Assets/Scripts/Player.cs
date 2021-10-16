@@ -134,7 +134,6 @@ public class Player : MonoBehaviour
         {
             case "Nest":
                 gameManager.checkPooint = collision.gameObject.transform.position;
-                speed = Vector2.zero;
                 break;
         }
     }

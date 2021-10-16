@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Shooter : MonoBehaviour
 {
+    [SerializeField] private float timeToDestroyBullet;
     [SerializeField] private Sprite[] activeMode;
     [SerializeField] private float[] bulletSpeed;
     [SerializeField] private float[] bulletTime;
@@ -28,7 +29,7 @@ public class Shooter : MonoBehaviour
         if(timer > bulletTime[idState])
         {
             var bulletObject = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-            bulletObject.GetComponent<Bullet>().SetSpeed(bulletSpeed[idState], direction.x, direction.y);
+            bulletObject.GetComponent<Bullet>().SetSpeed(bulletSpeed[idState], direction.x, direction.y,timeToDestroyBullet);
             timer = 0;
         }
         else
