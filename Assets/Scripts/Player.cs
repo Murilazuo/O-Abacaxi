@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private float baseSpeed;
     [SerializeField] private Vector2 speed;
+    [SerializeField] private WallCheck checkUp, checkDown, checkRight, checkLeft;
+    [SerializeField] private bool up, down, right, left;
 
     [SerializeField] private bool xAxis;
 
@@ -16,8 +18,15 @@ public class Player : MonoBehaviour
     GameManager gameManager;
     FollowPlatform followPlatform;
     Animator anim;
-    KeyCode inputUp, inputDown, inputRight, inputLeft, inputStop;
+    KeyCode inputUp, inputDown, inputRight, inputLeft;
 
+    void SetDirFalse()
+    {
+        up = false;
+        down = false;
+        right = false;
+        left = false;
+    }
     public static bool canMove;
     void Start()
     {
@@ -30,8 +39,6 @@ public class Player : MonoBehaviour
         inputDown = KeyCode.S;
         inputLeft= KeyCode.A;
         inputRight = KeyCode.D;
-
-
 
         Spawn();
 
@@ -67,20 +74,28 @@ public class Player : MonoBehaviour
     }
     private void Move()
     {
-        if (Input.GetKeyDown(inputUp))
+        if (Input.GetKeyDown(inputUp) && !checkUp.inColision && !up)
         {
+            SetDirFalse();
+            up = true;
             SetMove(false, Vector2.up);
         }
-        else if (Input.GetKeyDown(inputDown))
+        else if (Input.GetKeyDown(inputDown) && !checkDown.inColision && !down)
         {
+            SetDirFalse();
+            down = true;
             SetMove(false, Vector2.down);
         }
-        if (Input.GetKeyDown(inputLeft))
+        if (Input.GetKeyDown(inputLeft) && !checkLeft.inColision && !left)
         {
+            SetDirFalse();
+            left = true;
             SetMove(true, Vector2.left);
         }
-        if (Input.GetKeyDown(inputRight))
+        if (Input.GetKeyDown(inputRight) && !checkRight.inColision && !right)
         {
+            SetDirFalse();
+            right = true;
             SetMove(true, Vector2.right);
         }
         
@@ -90,11 +105,7 @@ public class Player : MonoBehaviour
     void Reverse()
     {
         anim.SetBool("xAxis", xAxis);
-        if (canChangeState)
-        {
-            GameManager.ChangeState(xAxis);
-        }
-
+        GameManager.ChangeState(xAxis);
     }
 
     void SetMove(bool axis, Vector2 direction)
