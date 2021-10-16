@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Shooter : MonoBehaviour
 {
+    [SerializeField] private Sprite[] activeMode;
     [SerializeField] private float[] bulletSpeed;
     [SerializeField] private float[] bulletTime;
     [SerializeField] private GameObject bulletPrefab;
@@ -12,14 +13,18 @@ public class Shooter : MonoBehaviour
     
     private int idState = 0;
     private float timer = 0;
-   
 
+    SpriteRenderer spr;
+    private void Start()
+    {
+        spr = GetComponent<SpriteRenderer>();
+    }
     void Update()
     {
-
         if (GameManager.active) idState = 1;
         else idState = 0;
 
+        spr.sprite = activeMode[idState];
         if(timer > bulletTime[idState])
         {
             var bulletObject = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
@@ -30,9 +35,6 @@ public class Shooter : MonoBehaviour
         {
             timer += Time.deltaTime;
         }
-        
-
-
     }
 
     

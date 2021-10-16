@@ -44,6 +44,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: TileSet
+    uniqueID: 1642376755
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

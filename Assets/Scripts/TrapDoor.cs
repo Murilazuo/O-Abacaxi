@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TrapDoor : MonoBehaviour
 {
-    Color openColor, closeColor;
+    [SerializeField] Sprite open, close;
 
     SpriteRenderer spr;
     Collider2D col;
@@ -13,8 +13,6 @@ public class TrapDoor : MonoBehaviour
         spr = GetComponent<SpriteRenderer>();
         col = GetComponent<Collider2D>();
 
-        openColor = Color.green;
-        closeColor = Color.red;
 
     }
     private void Update()
@@ -25,12 +23,12 @@ public class TrapDoor : MonoBehaviour
     {
         if (GameManager.active)
         {
-            spr.color = openColor;
+            spr.sprite = open;
             col.enabled = false;
         }
         else
         {
-            spr.color = closeColor;
+            spr.sprite = close;
             col.enabled = true;
         }
     }
