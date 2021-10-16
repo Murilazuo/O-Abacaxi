@@ -29,7 +29,7 @@ public class Platform : MonoBehaviour
     {
         switch (collision.gameObject.tag)
         {
-            case "Wall":
+            case "Reverse":
                 Revert();
                 break;
         }

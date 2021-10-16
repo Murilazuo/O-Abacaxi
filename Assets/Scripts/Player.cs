@@ -29,12 +29,12 @@ public class Player : MonoBehaviour
 
         lastDir = Vector2.one;
 
-        //Spawn();
+        Spawn();
 
     }
     void Spawn()
     {
-        if(gameManager.checkPooint != null)
+        if(gameManager.checkPooint != Vector2.zero)
         {
             transform.position = gameManager.checkPooint;
         }
@@ -106,13 +106,16 @@ public class Player : MonoBehaviour
     {
         switch (collision.gameObject.tag)
         {
-            case "Wall":
-                if (xAxis) RevertX();
-                else RevertY();
-                break;
             case "Bullet":
                 Hit();
                 Destroy(collision.gameObject);
+                break;
+            case "Reverse":
+                if (xAxis) RevertX();
+                else RevertY();
+                break;
+            case "Wall":
+                Stop();
                 break;
             
         }
