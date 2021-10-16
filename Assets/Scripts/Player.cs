@@ -8,11 +8,15 @@ public class Player : MonoBehaviour
     [SerializeField] private float baseSpeed;
     [SerializeField] private Vector2 speed;
 
-    [SerializeField]private Vector2 lastDir;
-    private bool xAxis;
+    [SerializeField] private Vector2 lastDir;
+    [SerializeField] private bool xAxis;
 
     bool hole = false;
     bool canChangeState = true;
+
+    [SerializeField] private GameObject[] arrowX;
+    [SerializeField] private GameObject[] arrowY;
+
 
     Rigidbody2D rig;
     GameManager gameManager;
@@ -34,6 +38,9 @@ public class Player : MonoBehaviour
 
         Spawn();
 
+
+
+        DesactiveArow();
     }
     void Spawn()
     {
@@ -57,7 +64,7 @@ public class Player : MonoBehaviour
             Stop();
         }
 
-        
+        ActiveAroow();
 
     }
     private void FixedUpdate()
@@ -70,7 +77,8 @@ public class Player : MonoBehaviour
     
     void RevertX()
     {
-        
+
+
         if (lastDir.y == 0)
         {
             lastDir.y = 1;
@@ -90,13 +98,17 @@ public class Player : MonoBehaviour
         {
             GameManager.ChangeState(xAxis);
         }
+
     }
     void Stop()
     {
         speed = Vector2.zero;
+
     }
     internal void RevertY()
     {
+
+
         if (lastDir.x == 0)
         {
             lastDir.x = 1;
@@ -114,6 +126,30 @@ public class Player : MonoBehaviour
         anim.SetBool("xAxis", xAxis);
         if (canChangeState) { 
         GameManager.ChangeState(xAxis);
+        }
+
+    }
+    void DesactiveArow()
+    {
+        arrowX[0].SetActive(false);
+        arrowX[1].SetActive(false);
+        arrowY[0].SetActive(false);
+        arrowY[1].SetActive(false);
+    }
+    void ActiveAroow()
+    {
+        if (xAxis)
+        {
+            DesactiveArow();
+            if (lastDir.y == 1) arrowY[1].SetActive(true);
+            else if (lastDir.y == -1) arrowY[0].SetActive(true);
+
+        }
+        else
+        {
+            DesactiveArow();
+            if (lastDir.x == 1) arrowY[1].SetActive(true);
+            else if (lastDir.x == -1) arrowY[0].SetActive(true);
         }
     }
 
