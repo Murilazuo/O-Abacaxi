@@ -8,6 +8,12 @@ public class GameManager : MonoBehaviour
     public static void ChangeState()
     {
         active = !active;
+
+        Platform[] platforms = FindObjectsOfType<Platform>();
+        foreach(Platform p in platforms)
+        {
+            p.Revert();
+        }
     }
     
 }
