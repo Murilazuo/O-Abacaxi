@@ -51,7 +51,8 @@ public class TrapDoor : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
-            canOpenTrap = true;   
+            canOpenTrap = true;
+        ChangerTrapState();
         
     }
 
