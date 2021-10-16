@@ -16,12 +16,14 @@ public class Player : MonoBehaviour
     Rigidbody2D rig;
     GameManager gameManager;
     FollowPlatform followPlatform;
+    Animator anim;
     KeyCode inputX, inputY, inputStop;
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();
         followPlatform = GetComponent<FollowPlatform>();
         gameManager = GameManager.gameManager;
+        anim = GetComponentInChildren<Animator>();
 
         inputX = KeyCode.D;
         inputY = KeyCode.W;
@@ -52,7 +54,10 @@ public class Player : MonoBehaviour
         else if (Input.GetKeyDown(inputStop))
         {
             Stop();
-        }   
+        }
+
+        
+
     }
     private void FixedUpdate()
     {
@@ -78,6 +83,7 @@ public class Player : MonoBehaviour
         if (speed.x == 0) speed.x = baseSpeed * lastDir.x;
         else speed.x = -speed.x;
 
+        anim.SetBool("xAxis", xAxis);
         GameManager.ChangeState(xAxis);
     }
     void Stop()
@@ -99,6 +105,8 @@ public class Player : MonoBehaviour
         speed.x = 0;
         if (speed.y == 0) speed.y = baseSpeed * lastDir.y;
         else speed.y = -speed.y;
+
+        anim.SetBool("xAxis", xAxis);
         GameManager.ChangeState(xAxis);
     }
 

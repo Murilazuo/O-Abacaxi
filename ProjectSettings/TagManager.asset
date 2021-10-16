@@ -10,6 +10,7 @@ TagManager:
   - Platform
   - Danger
   - Hole
+  - Reverse
   layers:
   - Default
   - TransparentFX
