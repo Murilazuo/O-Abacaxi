@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     [SerializeField] private bool xAxis;
 
     bool canChangeState = true;
-
+    bool dead = false;
     Door[] doors;
 
     [SerializeField] GameObject deathEfect;
@@ -220,6 +220,9 @@ public class Player : MonoBehaviour
                 Invoke(nameof(Restart), 2);
                 break;
             case "Bullet":
+                if(dead == false)
+                {
+                dead = true;
                 Instantiate(deathEfect, transform.position,Quaternion.identity);
                 GetComponentInChildren<SpriteRenderer>().enabled = false;
                 Stop();
@@ -227,6 +230,7 @@ public class Player : MonoBehaviour
                 canMove = false;
                 ShowNewText.showNewText.NewText("Você Morreu");
                 Destroy(collision.gameObject);
+                }
                 break;
         }
     }
