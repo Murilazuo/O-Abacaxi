@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
 
         DontDestroyOnLoad(this.gameObject);
     }
-    public static void ChangeState(bool xAxis)
+    public static void ChangeState()
     {
         active = !active;
 

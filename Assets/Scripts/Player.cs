@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Vector2 speed;
     [SerializeField] private WallCheck checkUp, checkDown, checkRight, checkLeft;
     [SerializeField] private bool up, down, right, left;
+    [SerializeField] private CheckWallCollision[] wallColision;
 
     [SerializeField] private bool xAxis;
 
@@ -105,7 +106,7 @@ public class Player : MonoBehaviour
     void Reverse()
     {
         anim.SetBool("xAxis", xAxis);
-        GameManager.ChangeState(xAxis);
+        GameManager.ChangeState();
     }
 
     void SetMove(bool axis, Vector2 direction)
