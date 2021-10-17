@@ -171,6 +171,9 @@ public class Player : MonoBehaviour
     {
         switch (collision.tag)
         {
+            case "Coin":
+                collision.GetComponent<Coin>().Collect();
+                break;
             case "Nest":
                 gameManager.checkPooint = collision.gameObject.transform.position;
                 break;

@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
 
     public static GameManager gameManager;
 
+    public static int coin;
+
     public Vector2 checkPooint;
     private void Awake()
     {
