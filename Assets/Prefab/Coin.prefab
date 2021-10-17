@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8189920758762571820}
   - component: {fileID: 6763793718831107878}
   - component: {fileID: 3090684891904203152}
-  - component: {fileID: 7027216435377738509}
+  - component: {fileID: 8762582407627820760}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Untagged
@@ -70,9 +70,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1168785149
+  m_SortingLayer: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 8890508793677688345, guid: e57a0fc4aaafd04408fe5a7d8c12098c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -101,8 +101,9 @@ MonoBehaviour:
   - {fileID: 2284047995720004024, guid: e57a0fc4aaafd04408fe5a7d8c12098c, type: 3}
   - {fileID: 1837337526495255165, guid: e57a0fc4aaafd04408fe5a7d8c12098c, type: 3}
   - {fileID: 3834070185472948947, guid: e57a0fc4aaafd04408fe5a7d8c12098c, type: 3}
---- !u!58 &7027216435377738509
-CircleCollider2D:
+  idCoin: 0
+--- !u!61 &8762582407627820760
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -111,9 +112,19 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0015926361, y: 0.020703793}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.37
+  m_Size: {x: 0.3088193, y: 0.40437412}
+  m_EdgeRadius: 0
