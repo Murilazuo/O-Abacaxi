@@ -136,7 +136,10 @@ public class Player : MonoBehaviour
     
     public void Stop()
     {
-        if (fall) { anim.SetTrigger("Fall"); fall = false; }
+        if (fall) { 
+            anim.SetTrigger("Fall"); fall = false;
+            ShowNewText.showNewText.NewText("Você Morreu");
+        }
 
         speed = Vector2.zero;
     }
