@@ -61,7 +61,8 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
-        if (!canMove)
+
+        if (!canMove || rig.velocity != Vector2.zero)
         {
             return;
         }
