@@ -26,6 +26,8 @@ public class Player : MonoBehaviour
 
     Door[] doors;
 
+    [SerializeField] GameObject deathEfect;
+
     Rigidbody2D rig;
     GameManager gameManager;
     FollowPlatform followPlatform;
@@ -191,7 +193,12 @@ public class Player : MonoBehaviour
                 Invoke(nameof(Restart), 2);
                 break;
             case "Bullet":
-                Restart();
+                Instantiate(deathEfect, transform.position,Quaternion.identity);
+                GetComponentInChildren<SpriteRenderer>().enabled = false;
+                Stop();
+                Invoke(nameof(Restart), 2);
+                canMove = false;
+                ShowNewText.showNewText.NewText("Você Morreu");
                 Destroy(collision.gameObject);
                 break;
         }

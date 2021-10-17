@@ -461,6 +461,7 @@ MonoBehaviour:
   trail: {fileID: 9015192416159491708}
   currentDirection: {x: 0, y: 0}
   xAxis: 0
+  deathEfect: {fileID: 1567600541583715489, guid: a9fa0e4de936cd74a95b2bac93ebcea4, type: 3}
   canMoveAudio: {fileID: 8300000, guid: 7db5c003c6b3b804c94832c996e4e2a6, type: 3}
   canMove: 1
 --- !u!50 &9015192415039758819
