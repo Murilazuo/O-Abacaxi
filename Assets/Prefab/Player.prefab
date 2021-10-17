@@ -446,7 +446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3ebde80bbfa0204cab334def5cefd01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: 3
+  baseSpeed: 5
   speed: {x: 0, y: 0}
   checkUp: {fileID: 2037215361}
   checkDown: {fileID: 1509158100}
