@@ -7,12 +7,17 @@ public class Platform : MonoBehaviour
     [SerializeField] private float speed = 1;
     [SerializeField] private Vector2 direction;
 
+    private BoxCollider2D thisCollider;
+    private Collider2D playerCollider;
+
     private Rigidbody2D rig;
     private FollowPlatform followPlatform;
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();
         direction = direction.normalized;
+        playerCollider = FindObjectOfType<Player>().GetComponent<Collider2D>();
+        thisCollider = GetComponent<BoxCollider2D>();
     }
     
     private void FixedUpdate()
@@ -22,7 +27,21 @@ public class Platform : MonoBehaviour
 
     public void Revert()
     {
-        direction *= -1;
+        if (thisCollider.IsTouching(playerCollider) == true)
+        {
+            StartCoroutine("waitPlayerLeave");
+        }
+        else 
+        {
+            direction *= -1;
+        }
+
+    }
+
+    public IEnumerator waitPlayerLeave()
+    {
+        yield return new WaitForSeconds(.15f);
+        Revert();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -34,5 +53,26 @@ public class Platform : MonoBehaviour
                 break;
         }
     }
-    
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        switch (collision.gameObject.tag) 
+        {
+            case "Player":
+                print("UEEEPA");
+                direction *= -1;
+                break;
+        }
+
+    }
+
+    private void OnEnable()
+    {
+        Player.OnChangedState += Revert;
+    }
+    private void OnDisable()
+    {
+
+        Player.OnChangedState -= Revert;
+    }
 }
