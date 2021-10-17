@@ -27,7 +27,7 @@ public class Platform : MonoBehaviour
     {
         rig.velocity = direction * speed;
     }
-
+    
     public void Revert()
     {
         if (!hasPlayer)

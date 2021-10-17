@@ -52,6 +52,13 @@ public class Player : MonoBehaviour
 
 
     }
+    private void SetDirWallCheck()
+    {
+        foreach (WallCheck check in wallColision)
+        {
+            check.playerDirection = currentDirection;
+        }
+    }
     void Spawn()
     {
         if(gameManager.checkPooint != Vector2.zero)
@@ -61,8 +68,9 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
+        print(rig.velocity);
 
-        if (!canMove || rig.velocity != Vector2.zero)
+        if (rig.velocity != Vector2.zero)
         {
             return;
         }
@@ -81,21 +89,21 @@ public class Player : MonoBehaviour
     }
     private void Move()
     {
-        if (Input.GetKeyDown(inputUp) && currentDirection != Vector2.up && wallColision[0])
+        if (Input.GetKeyDown(inputUp) && currentDirection != Vector2.up && !wallColision[0].inColision)
         {
             SetMove(Vector2.up);
         }
-        else if (Input.GetKeyDown(inputDown) && currentDirection != Vector2.down && wallColision[1])
+        else if (Input.GetKeyDown(inputDown) && currentDirection != Vector2.down && !wallColision[1].inColision)
         {
             SetMove(Vector2.down);
 
         }
-        if (Input.GetKeyDown(inputLeft) && currentDirection != Vector2.left && wallColision[2])
+        if (Input.GetKeyDown(inputLeft) && currentDirection != Vector2.left && !wallColision[2].inColision)
         {
             SetMove(Vector2.left);
 
         }
-        if (Input.GetKeyDown(inputRight) && currentDirection != Vector2.right && wallColision[3])
+        if (Input.GetKeyDown(inputRight) && currentDirection != Vector2.right && !wallColision[3].inColision)
         {
             SetMove(Vector2.right);
 
@@ -110,6 +118,7 @@ public class Player : MonoBehaviour
 
     void SetMove(Vector2 direction)
     {
+        SetDirWallCheck();
         canMove = false;
         currentDirection = direction;
         speed = direction * baseSpeed;
@@ -136,6 +145,7 @@ public class Player : MonoBehaviour
                 break;
             case "Wall":
                 canMove = true;
+                Stop();
                 break;
         }
     }
