@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     [SerializeField] private WallCheck checkUp, checkDown, checkRight, checkLeft;
     [SerializeField] private bool up, down, right, left;
     [SerializeField] private WallCheck[] wallColision;
+    [SerializeField] private GameObject[] wallCollisionOBJ;
 
     bool fall = false;
     //evento
@@ -96,6 +97,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(inputUp) && currentDirection != Vector2.up && !wallColision[0].inColision)
         {
             SetMove(Vector2.up);
+
         }
         else if (Input.GetKeyDown(inputDown) && currentDirection != Vector2.down && !wallColision[1].inColision)
         {
@@ -127,7 +129,7 @@ public class Player : MonoBehaviour
             OnChangedState();
         }
 
-        canMove = false;
+        //canMove = false;
         currentDirection = direction;
         SetDirWallCheck();
         speed = direction * baseSpeed;
@@ -154,9 +156,9 @@ public class Player : MonoBehaviour
                 speed = speed.normalized * -1 * baseSpeed;
                 Reverse();
                 break;
-            case "Wall":
+            /*case "Wall":
                 canMove = true;
-                break;
+                break;*/
         }
     }
     private void OnCollisionExit2D(Collision2D collision)
