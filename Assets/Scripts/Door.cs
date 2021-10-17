@@ -39,13 +39,14 @@ public class Door : MonoBehaviour
         {
             spr.sprite = open;
             //gameObject.tag = "Door";
-            col.enabled = false;
+            gameObject.tag = "Door";
+            gameObject.layer = 10;
         }
         else
         {
             spr.sprite = close;
             gameObject.tag = "Wall";
-            col.enabled = true;
+            gameObject.layer = 0;
         }
 
         /*
