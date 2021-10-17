@@ -11,12 +11,12 @@ public class Player : MonoBehaviour
     [SerializeField] private bool up, down, right, left;
     [SerializeField] private WallCheck[] wallColision;
 
-
+    bool fall = false;
     //evento
     public delegate void ChangeStateAction();
     public static event ChangeStateAction OnChangedState;
 
-    [SerializeField]private Vector2 currentDirection;
+    [SerializeField]internal Vector2 currentDirection;
 
 
     [SerializeField] private bool xAxis;
@@ -33,14 +33,17 @@ public class Player : MonoBehaviour
 
     
     public  bool canMove = true;
+    private void Awake()
+    {
+        followPlatform = GetComponent<FollowPlatform>();
+        followPlatform.hasPlayer = true;
+    }
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();
-        followPlatform = GetComponent<FollowPlatform>();
         gameManager = GameManager.gameManager;
         anim = GetComponentInChildren<Animator>();
 
-        followPlatform.hasPlayer = true;
 
         inputUp = KeyCode.W;
         inputDown = KeyCode.S;
@@ -68,9 +71,8 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
-        print(rig.velocity);
 
-        if (rig.velocity != Vector2.zero)
+        if (rig.velocity != Vector2.zero || !canMove)
         {
             return;
         }
@@ -84,8 +86,10 @@ public class Player : MonoBehaviour
        // Vector2 extraSpeed  = Vector2.zero;
         //if (followPlatform.platform != null)
         //    extraSpeed = followPlatform.rig.velocity;
-        
-        rig.velocity = speed;// + extraSpeed;
+        if(followPlatform.platform == null)
+        {
+            rig.velocity = speed;// + extraSpeed;
+        }
     }
     private void Move()
     {
@@ -132,6 +136,8 @@ public class Player : MonoBehaviour
     
     public void Stop()
     {
+        if (fall) { anim.SetTrigger("Fall"); fall = false; }
+
         speed = Vector2.zero;
     }
    
@@ -141,7 +147,7 @@ public class Player : MonoBehaviour
         switch (collision.gameObject.tag)
         {
             case "Bullet":
-                Hit();
+                Restart();
                 Destroy(collision.gameObject);
                 break;
             case "Reverse":
@@ -168,21 +174,17 @@ public class Player : MonoBehaviour
             case "Nest":
                 gameManager.checkPooint = collision.gameObject.transform.position;
                 break;
-        }
-    }
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        switch (collision.tag)
-        {
             case "Ground":
                 return;
             case "Hole":
-                if (followPlatform.platform == null) Hit();
+                canMove = false;
+                fall = true;
+                Invoke(nameof(Stop), 0.1f * baseSpeed);
+                Invoke(nameof(Restart), 2);
                 break;
         }
     }
-
-    private void Hit()
+    private void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

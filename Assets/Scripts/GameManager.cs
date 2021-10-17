@@ -20,12 +20,12 @@ public class GameManager : MonoBehaviour
     {
         active = !active;
 
-        Platform[] platforms = FindObjectsOfType<Platform>();
+       /* Platform[] platforms = FindObjectsOfType<Platform>();
         foreach(Platform p in platforms)
         {
             
             p.Revert();
-        }
+        }*/
         TrapDoor[] traps = FindObjectsOfType<TrapDoor>();
         foreach (TrapDoor trap in traps)
         {

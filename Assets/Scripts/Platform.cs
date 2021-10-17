@@ -30,10 +30,9 @@ public class Platform : MonoBehaviour
     
     public void Revert()
     {
-        if (!hasPlayer)
-        {
+        
             direction *= -1;
-        }
+        
         /*
         if (thisCollider.IsTouching(playerCollider) == true)
         {
@@ -54,11 +53,17 @@ public class Platform : MonoBehaviour
         stop = false;
     }
 
+    public void SetDireection(Vector2 newDir)
+    {
+        direction = newDir;
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         switch (collision.gameObject.tag)
         {
-            case "Reverse":
+            case "Wall":
+                if (hasPlayer) break;
+                direction = Vector2.zero;
                 StartCoroutine(nameof(WaitPlayerLeave));
                 break;
         }
