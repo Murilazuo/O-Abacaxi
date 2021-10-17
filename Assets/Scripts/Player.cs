@@ -118,9 +118,14 @@ public class Player : MonoBehaviour
 
     void SetMove(Vector2 direction)
     {
-        SetDirWallCheck();
+        if (OnChangedState != null)
+        {
+            OnChangedState();
+        }
+
         canMove = false;
         currentDirection = direction;
+        SetDirWallCheck();
         speed = direction * baseSpeed;
         Reverse();
     }
@@ -145,7 +150,6 @@ public class Player : MonoBehaviour
                 break;
             case "Wall":
                 canMove = true;
-                Stop();
                 break;
         }
     }

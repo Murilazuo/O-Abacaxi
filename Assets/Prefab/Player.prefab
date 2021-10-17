@@ -71,6 +71,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inColision: 0
+  playerDirection: {x: 0, y: 0}
+  direction: {x: 0, y: 1}
 --- !u!1 &1509158098
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,6 +144,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inColision: 0
+  playerDirection: {x: 0, y: -1}
+  direction: {x: 0, y: 0}
 --- !u!1 &2037215359
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,6 +191,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inColision: 0
+  playerDirection: {x: 0, y: 0}
+  direction: {x: 0, y: 1}
 --- !u!61 &2037215362
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -284,6 +290,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inColision: 0
+  playerDirection: {x: 0, y: 0}
+  direction: {x: 0, y: -1}
 --- !u!1 &9015192414415492484
 GameObject:
   m_ObjectHideFlags: 0
