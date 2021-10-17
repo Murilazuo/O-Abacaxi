@@ -6,12 +6,13 @@ using UnityEngine.UI;
 public class TextHud : MonoBehaviour
 {
     Text text;
+    [TextArea][SerializeField] private string extraText = "";
     private void Start()
     {
         text = GetComponent<Text>();
     }
     private void Update()
     {
-        text.text = GameManager.coin.ToString();
+        text.text = extraText + GameManager.coin.ToString();
     }
 }
