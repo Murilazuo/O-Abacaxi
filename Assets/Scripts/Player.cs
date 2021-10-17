@@ -148,10 +148,7 @@ public class Player : MonoBehaviour
     {
         switch (collision.gameObject.tag)
         {
-            case "Bullet":
-                Restart();
-                Destroy(collision.gameObject);
-                break;
+            
             case "Reverse":
                 speed = speed.normalized * -1 * baseSpeed;
                 Reverse();
@@ -177,8 +174,12 @@ public class Player : MonoBehaviour
             case "Hole":
                 canMove = false;
                 fall = true;
-                Invoke(nameof(Stop), 0.1f * baseSpeed);
+                Invoke(nameof(Stop), 0.1f );
                 Invoke(nameof(Restart), 2);
+                break;
+            case "Bullet":
+                Restart();
+                Destroy(collision.gameObject);
                 break;
         }
     }

@@ -10,6 +10,8 @@ public class Shooter : MonoBehaviour
     [SerializeField] private float[] bulletTime;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Vector2Int direction;
+    [SerializeField] private bool startActive;
+    private bool active;
 
     
     private int idState = 0;
@@ -22,7 +24,10 @@ public class Shooter : MonoBehaviour
     }
     void Update()
     {
-        if (GameManager.active) idState = 1;
+        if (GameManager.active) active = startActive;
+        else active = !startActive;
+
+        if (active) idState = 1;
         else idState = 0;
 
         spr.sprite = activeMode[idState];

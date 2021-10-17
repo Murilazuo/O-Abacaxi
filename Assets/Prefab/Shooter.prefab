@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03cf72949f31848469b5beff6f298b4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToDestroyBullet: 6
+  timeToDestroyBullet: 5
   activeMode:
   - {fileID: -8111070201425301780, guid: b1f6ccd95de456a4bb2ac9fad9f933b4, type: 3}
   - {fileID: -6668819475259974978, guid: b1f6ccd95de456a4bb2ac9fad9f933b4, type: 3}
@@ -107,3 +107,4 @@ MonoBehaviour:
   - 0.1
   bulletPrefab: {fileID: 8580167020597446782, guid: 6b80f12373de1ef4283c90f44e584581, type: 3}
   direction: {x: 1, y: 0}
+  startActive: 0
