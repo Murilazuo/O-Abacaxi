@@ -180,7 +180,7 @@ public class Player : MonoBehaviour
 
         }
     }
-  /*  private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         switch (collision.tag)
         {
@@ -188,7 +188,7 @@ public class Player : MonoBehaviour
                 if (followPlatform.platform == null) Hit();
                 break;
         }
-    }*/
+    }
 
     private void Hit()
     {
