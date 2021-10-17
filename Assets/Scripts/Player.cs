@@ -234,6 +234,21 @@ public class Player : MonoBehaviour
                 break;
         }
     }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Door"))
+        {
+            collision.GetComponent<Door>().hasPlayer = true;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Door")){
+            collision.GetComponent<Door>().hasPlayer = false;
+        }
+    }
+
+
     private void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

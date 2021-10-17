@@ -20,8 +20,10 @@ public class WallCheck : MonoBehaviour
                 inColision = true;
                 hasDoor = false;
             }
-            if(collision.CompareTag("Door"))
+            if (collision.CompareTag("Door") && collision.GetComponent<Collider2D>().isTrigger)
+             {
                 hasDoor = true;
+             }
         
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -29,7 +31,10 @@ public class WallCheck : MonoBehaviour
         if (collision.CompareTag("Wall"))
             inColision = false;
         if (collision.CompareTag("Door"))
+        {
             hasDoor = false;
+        }
 
     }
+    
 }

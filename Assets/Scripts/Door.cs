@@ -8,6 +8,8 @@ public class Door : MonoBehaviour
 
     [SerializeField] private bool isDoorOpen;
 
+    public bool hasPlayer;
+
 
     SpriteRenderer spr;
     Collider2D col;
@@ -20,6 +22,10 @@ public class Door : MonoBehaviour
     public void ChangeDoorState()
     {
         isDoorOpen = !isDoorOpen;
+        if (hasPlayer)
+        {
+            Invoke(nameof(DoorState), 0.15f);
+        }else DoorState();
     }
     /* public IEnumerator Checker() 
      {
@@ -30,7 +36,6 @@ public class Door : MonoBehaviour
 
     private void Update()
     {
-        DoorState();
     }
 
     void DoorState()
@@ -40,13 +45,13 @@ public class Door : MonoBehaviour
             spr.sprite = open;
             //gameObject.tag = "Door";
             gameObject.tag = "Door";
-            gameObject.layer = 10;
+            col.isTrigger = true;
         }
         else
         {
+            col.isTrigger = false;
             spr.sprite = close;
             gameObject.tag = "Wall";
-            gameObject.layer = 0;
         }
 
         /*
