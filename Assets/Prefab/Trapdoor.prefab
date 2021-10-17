@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8804153651755771427}
   - component: {fileID: 8804153651755771452}
   - component: {fileID: 8804153651755771453}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trapdoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,6 +100,7 @@ MonoBehaviour:
   close: {fileID: -6057101641252905267, guid: 489202a3554aa644e8d08502320518a7, type: 3}
   spr: {fileID: 0}
   timeTrapDoor: 0
+  canOpenTrap: 1
   openTrapDoor: 1
 --- !u!61 &8804153651755771453
 BoxCollider2D:
@@ -114,7 +115,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.004324913, y: 0.0021624267}
+  m_Offset: {x: -0.013091564, y: 0.0039040744}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -125,5 +126,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.74051094, y: 0.7621352}
+  m_Size: {x: 0.5036478, y: 0.6193206}
   m_EdgeRadius: 0

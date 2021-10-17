@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    [SerializeField]Sprite open, close;
+    [SerializeField] Sprite open, close;
+
+    [SerializeField] private bool isDoorOpen;
+
 
     SpriteRenderer spr;
     Collider2D col;
@@ -12,24 +15,63 @@ public class Door : MonoBehaviour
     {
         spr = GetComponent<SpriteRenderer>();
         col = GetComponent<Collider2D>();
-
+        //StartCoroutine("Checker");
     }
+    public void ChangeDoorState()
+    {
+        isDoorOpen = !isDoorOpen;
+    }
+    /* public IEnumerator Checker() 
+     {
+         yield return new WaitForSeconds(.2f);
+
+
+     }*/
+
     private void Update()
     {
         DoorState();
     }
+
     void DoorState()
     {
-        if (GameManager.active)
+        if (isDoorOpen)
         {
             spr.sprite = open;
+            //gameObject.tag = "Door";
             col.enabled = false;
         }
         else
         {
             spr.sprite = close;
+            gameObject.tag = "Wall";
             col.enabled = true;
         }
+
+        /*
+            if (GameManager.active)
+            {
+                spr.sprite = open;
+                gameObject.tag = "Door";
+                col.enabled = false;
+            }
+            else if(isDoorOpen)
+            {
+                spr.sprite = close;
+                gameObject.tag = "Wall";
+                isDoorOpen = false;
+                col.enabled = true;
+            }*/
     }
-    
+
+
+    private void OnEnable()
+    {
+        Player.OnChangedState += ChangeDoorState;
+    }
+    private void OnDisable()
+    {
+
+        Player.OnChangedState -= ChangeDoorState;
+    }
 }

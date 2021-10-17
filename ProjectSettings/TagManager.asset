@@ -11,6 +11,7 @@ TagManager:
   - Danger
   - Hole
   - Reverse
+  - Door
   layers:
   - Default
   - TransparentFX

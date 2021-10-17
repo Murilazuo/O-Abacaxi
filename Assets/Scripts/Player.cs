@@ -11,9 +11,19 @@ public class Player : MonoBehaviour
     [SerializeField] private bool up, down, right, left;
     [SerializeField] private CheckWallCollision[] wallColision;
 
+
+    //evento
+    public delegate void ChangeStateAction();
+    public static event ChangeStateAction OnChangedState;
+
+
+
+
     [SerializeField] private bool xAxis;
 
     bool canChangeState = true;
+
+    Door[] doors;
 
     Rigidbody2D rig;
     GameManager gameManager;
@@ -107,6 +117,12 @@ public class Player : MonoBehaviour
     {
         anim.SetBool("xAxis", xAxis);
         GameManager.ChangeState();
+
+        if (OnChangedState != null) 
+        {
+            OnChangedState();
+        }
+
     }
 
     void SetMove(bool axis, Vector2 direction)
@@ -158,9 +174,13 @@ public class Player : MonoBehaviour
             case "Nest":
                 gameManager.checkPooint = collision.gameObject.transform.position;
                 break;
+            case "Hole":
+                if (followPlatform.platform == null) Hit();
+                break;
+
         }
     }
-    private void OnTriggerStay2D(Collider2D collision)
+  /*  private void OnTriggerStay2D(Collider2D collision)
     {
         switch (collision.tag)
         {
@@ -168,7 +188,7 @@ public class Player : MonoBehaviour
                 if (followPlatform.platform == null) Hit();
                 break;
         }
-    }
+    }*/
 
     private void Hit()
     {
