@@ -6,6 +6,9 @@ public class CoinsManager : MonoBehaviour
 {
     public static bool[] coinCollect;
     static bool firt = true;
+    bool inCombo = false;
+    public int comboCount = 0;
+    public float time, endTime;
     private void Awake()
     {
         if (firt)
@@ -20,5 +23,26 @@ public class CoinsManager : MonoBehaviour
             coin.GetComponent<Coin>().idCoin = idCoins;
             idCoins++;
         }
+    }
+    private void Update()
+    {
+        if (inCombo)
+        {
+           if(time > endTime)
+           {
+                inCombo = false;
+            comboCount = 0;
+           }
+          else
+          {
+            time += Time.deltaTime;
+          }
+        }
+    }
+    public void PickupCoin()
+    {
+        time = 0;
+        comboCount += 1;
+        inCombo = true;
     }
 }

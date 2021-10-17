@@ -22,6 +22,7 @@ public class Coin : MonoBehaviour
     {
         GameManager.coin++;
         CoinsManager.coinCollect[idCoin] = true;
+        GetComponentInParent<CoinsManager>().PickupCoin();
         Destroy(gameObject);
     }
 }
