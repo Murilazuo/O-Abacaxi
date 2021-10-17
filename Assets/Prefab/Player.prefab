@@ -449,10 +449,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseSpeed: 5
   speed: {x: 0, y: 0}
-  checkUp: {fileID: 2037215361}
-  checkDown: {fileID: 1509158100}
-  checkRight: {fileID: 1021752241}
-  checkLeft: {fileID: 2137256502}
   up: 0
   down: 0
   right: 0
@@ -462,6 +458,7 @@ MonoBehaviour:
   - {fileID: 1509158100}
   - {fileID: 2137256502}
   - {fileID: 1021752241}
+  trail: {fileID: 9015192416159491708}
   currentDirection: {x: 0, y: 0}
   xAxis: 0
   canMoveAudio: {fileID: 8300000, guid: 7db5c003c6b3b804c94832c996e4e2a6, type: 3}
