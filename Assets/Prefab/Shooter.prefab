@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5697328440005761175}
   - component: {fileID: 5697328440005761168}
   - component: {fileID: 5697328440005761169}
+  - component: {fileID: 3539279431722092932}
   m_Layer: 0
   m_Name: Shooter
   m_TagString: Wall
@@ -96,9 +97,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToDestroyBullet: 5
-  activeMode:
-  - {fileID: -8111070201425301780, guid: b1f6ccd95de456a4bb2ac9fad9f933b4, type: 3}
-  - {fileID: -6668819475259974978, guid: b1f6ccd95de456a4bb2ac9fad9f933b4, type: 3}
   bulletSpeed:
   - 5
   - 5
@@ -108,3 +106,22 @@ MonoBehaviour:
   bulletPrefab: {fileID: 8580167020597446782, guid: 6b80f12373de1ef4283c90f44e584581, type: 3}
   direction: {x: 1, y: 0}
   startActive: 0
+--- !u!95 &3539279431722092932
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5697328440005761170}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4bee184b16be810478c41441ed884f6f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

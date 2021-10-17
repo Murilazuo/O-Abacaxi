@@ -17,9 +17,9 @@ public class Bullet : MonoBehaviour
         transform.eulerAngles = new Vector3(0,0,angle);
         rig.velocity = new Vector2(speed * dirX, speed * dirY);
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        switch (collision.collider.tag)
+        switch (collision.tag)
         {
             case "Wall":
                 Destroy(gameObject);

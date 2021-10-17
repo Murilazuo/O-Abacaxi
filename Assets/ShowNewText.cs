@@ -9,6 +9,7 @@ public class ShowNewText : MonoBehaviour
     Animator anim;
     Text text;
     public static ShowNewText showNewText;
+
     void Start()
     {
         showNewText = this;

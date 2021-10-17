@@ -11,8 +11,12 @@ public class NextScene : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            ShowNewText.showNewText.NewText("Passou de Fase!");
+
             StartCoroutine(nameof(NextLevel));
-            collision.GetComponent<Player>().canMove = false;
+            Player player= collision.GetComponent<Player>();
+            player.canMove = false;
+            player.Stop();
         }
     }
 
