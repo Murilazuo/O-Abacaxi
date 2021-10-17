@@ -9,8 +9,14 @@ public class CoinsManager : MonoBehaviour
     bool inCombo = false;
     public int comboCount = 0;
     public float time, endTime;
+
+    [SerializeField] private float comboForce;
+
+    AudioSource audioSourse;
+    [SerializeField]AudioClip collectCoin;
     private void Awake()
     {
+        audioSourse = GetComponent<AudioSource>();
         if (firt)
         {
             firt = false;
@@ -31,7 +37,7 @@ public class CoinsManager : MonoBehaviour
            if(time > endTime)
            {
                 inCombo = false;
-            comboCount = 0;
+                comboCount = 0;
            }
           else
           {
@@ -41,6 +47,9 @@ public class CoinsManager : MonoBehaviour
     }
     public void PickupCoin()
     {
+        comboCount = Mathf.Clamp(comboCount, 0, 5);
+        audioSourse.pitch = .9f + (comboCount / comboForce);
+        audioSourse.PlayOneShot(collectCoin);
         time = 0;
         comboCount += 1;
         inCombo = true;
