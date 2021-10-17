@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
     GameManager gameManager;
     FollowPlatform followPlatform;
     Animator anim;
+    AudioSource audioSource;
     KeyCode inputUp, inputDown, inputRight, inputLeft;
 
     
@@ -93,9 +94,13 @@ public class Player : MonoBehaviour
     }
     private void Move()
     {
-        if (Input.GetKeyDown(inputUp) && currentDirection != Vector2.up && !wallColision[0].inColision)
+        if (Input.GetKeyDown(inputUp))
         {
-            SetMove(Vector2.up);
+            if (currentDirection != Vector2.up && !wallColision[0].inColision)
+            {
+                SetMove(Vector2.up);
+            }
+                else print("test");
         }
         else if (Input.GetKeyDown(inputDown) && currentDirection != Vector2.down && !wallColision[1].inColision)
         {
