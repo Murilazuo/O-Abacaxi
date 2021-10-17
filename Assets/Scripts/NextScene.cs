@@ -12,7 +12,7 @@ public class NextScene : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             StartCoroutine(nameof(NextLevel));
-            //Player.canMove = false;
+            collision.GetComponent<Player>().canMove = false;
         }
     }
 
