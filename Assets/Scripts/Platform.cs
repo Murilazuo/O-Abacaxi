@@ -11,7 +11,10 @@ public class Platform : MonoBehaviour
     private Collider2D playerCollider;
 
     private Rigidbody2D rig;
-    private FollowPlatform followPlatform;
+
+    public bool hasPlayer;
+
+    private bool stop = false;
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();
@@ -27,6 +30,11 @@ public class Platform : MonoBehaviour
 
     public void Revert()
     {
+        if (!hasPlayer)
+        {
+            direction *= -1;
+        }
+        /*
         if (thisCollider.IsTouching(playerCollider) == true)
         {
             StartCoroutine("waitPlayerLeave");
@@ -34,14 +42,16 @@ public class Platform : MonoBehaviour
         else 
         {
             direction *= -1;
-        }
+        }*/
 
     }
 
-    public IEnumerator waitPlayerLeave()
+    public IEnumerator WaitPlayerLeave()
     {
-        yield return new WaitForSeconds(.15f);
+        stop = true;
+        yield return new WaitForSeconds(.5f);
         Revert();
+        stop = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -49,12 +59,12 @@ public class Platform : MonoBehaviour
         switch (collision.gameObject.tag)
         {
             case "Reverse":
-                Revert();
+                StartCoroutine(nameof(WaitPlayerLeave));
                 break;
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+  /*  private void OnTriggerEnter2D(Collider2D collision)
     {
         switch (collision.gameObject.tag) 
         {
@@ -64,15 +74,15 @@ public class Platform : MonoBehaviour
                 break;
         }
 
-    }
+    }*/
 
-    private void OnEnable()
-    {
-        Player.OnChangedState += Revert;
-    }
-    private void OnDisable()
-    {
+    //private void OnEnable()
+    //{
+    //    Player.OnChangedState += Revert;
+    //}
+    //private void OnDisable()
+    //{
 
-        Player.OnChangedState -= Revert;
-    }
+    //    Player.OnChangedState -= Revert;
+    //}
 }

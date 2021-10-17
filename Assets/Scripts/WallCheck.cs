@@ -15,8 +15,4 @@ public class WallCheck : MonoBehaviour
         if (collision.CompareTag("Wall"))
             inColision = false;
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        print("Test");
-    }
 }
