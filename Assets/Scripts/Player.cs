@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     [SerializeField] private bool xAxis;
 
     bool canChangeState = true;
-
+    bool dead = false;
     Door[] doors;
 
     [SerializeField] GameObject deathEfect;
@@ -102,28 +102,55 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(inputUp))
         {
             if (currentDirection != Vector2.up && !wallColision[0].inColision)
+            {
                 SetMove(Vector2.up);
+                if (wallColision[0].hasDoor)
+                {
+                     audioSource.PlayOneShot(canMoveAudio);
+                        wallColision[0].hasDoor = false;
+
+                }
+            }
             else audioSource.PlayOneShot(canMoveAudio);
         }
         else if (Input.GetKeyDown(inputDown))
         {
             if (currentDirection != Vector2.down && !wallColision[1].inColision)
+            {
                 SetMove(Vector2.down);
+                if (wallColision[1].hasDoor)
+                {
+                    audioSource.PlayOneShot(canMoveAudio);
+                    wallColision[1].hasDoor = false;
+                }
+            }
             else audioSource.PlayOneShot(canMoveAudio);
-
-
         }
         if (Input.GetKeyDown(inputLeft))
         {
             if(currentDirection != Vector2.left && !wallColision[2].inColision)
+            {
                 SetMove(Vector2.left);
+                if (wallColision[2].hasDoor)
+                {
+                    audioSource.PlayOneShot(canMoveAudio);
+                    wallColision[2].hasDoor = false;
+                }
+            }
             else audioSource.PlayOneShot(canMoveAudio);
 
         }
         if (Input.GetKeyDown(inputRight))
         {
             if(currentDirection != Vector2.right && !wallColision[3].inColision)
-            SetMove(Vector2.right);
+            {
+                SetMove(Vector2.right);
+                if (wallColision[3].hasDoor)
+                {
+                    audioSource.PlayOneShot(canMoveAudio);
+                    wallColision[3].hasDoor = false;
+                }
+            }
             else audioSource.PlayOneShot(canMoveAudio);
 
         }
@@ -193,6 +220,9 @@ public class Player : MonoBehaviour
                 Invoke(nameof(Restart), 2);
                 break;
             case "Bullet":
+                if(dead == false)
+                {
+                dead = true;
                 Instantiate(deathEfect, transform.position,Quaternion.identity);
                 GetComponentInChildren<SpriteRenderer>().enabled = false;
                 Stop();
@@ -200,6 +230,7 @@ public class Player : MonoBehaviour
                 canMove = false;
                 ShowNewText.showNewText.NewText("Você Morreu");
                 Destroy(collision.gameObject);
+                }
                 break;
         }
     }

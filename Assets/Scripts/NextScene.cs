@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class NextScene : MonoBehaviour
 {
     [SerializeField] float nextLevelTime;
-
+    [SerializeField] bool lastLevel = false;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -14,7 +14,7 @@ public class NextScene : MonoBehaviour
             ShowNewText.showNewText.NewText("Passou de Fase!");
 
             StartCoroutine(nameof(NextLevel));
-            Player player= collision.GetComponent<Player>();
+            Player player = collision.GetComponent<Player>();
             player.canMove = false;
             player.Stop();
         }
@@ -23,6 +23,10 @@ public class NextScene : MonoBehaviour
     IEnumerator NextLevel()
     {
         yield return new WaitForSeconds(nextLevelTime);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if (lastLevel)
+            SceneManager.LoadScene("End");
+        else SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+        
     }
 }
