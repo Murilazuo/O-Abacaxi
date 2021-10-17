@@ -93,21 +93,21 @@ public class Player : MonoBehaviour
     }
     private void Move()
     {
-        if (Input.GetKeyDown(inputUp) && currentDirection != Vector2.up && !wallColision[0].inColision)
+        if (Input.GetKeyDown(inputUp) && currentDirection != Vector2.up)// && !wallColision[0].inColision)
         {
             SetMove(Vector2.up);
         }
-        else if (Input.GetKeyDown(inputDown) && currentDirection != Vector2.down && !wallColision[1].inColision)
+        else if (Input.GetKeyDown(inputDown) && currentDirection != Vector2.down)// && !wallColision[1].inColision)
         {
             SetMove(Vector2.down);
 
         }
-        if (Input.GetKeyDown(inputLeft) && currentDirection != Vector2.left && !wallColision[2].inColision)
+        if (Input.GetKeyDown(inputLeft) && currentDirection != Vector2.left)// && !wallColision[2].inColision)
         {
             SetMove(Vector2.left);
 
         }
-        if (Input.GetKeyDown(inputRight) && currentDirection != Vector2.right && !wallColision[3].inColision)
+        if (Input.GetKeyDown(inputRight) && currentDirection != Vector2.right) // && !wallColision[3].inColision)
         {
             SetMove(Vector2.right);
 
@@ -127,7 +127,6 @@ public class Player : MonoBehaviour
             OnChangedState();
         }
 
-        canMove = false;
         currentDirection = direction;
         SetDirWallCheck();
         speed = direction * baseSpeed;
@@ -140,8 +139,8 @@ public class Player : MonoBehaviour
             anim.SetTrigger("Fall"); fall = false;
             ShowNewText.showNewText.NewText("Você Morreu");
         }
-
         speed = Vector2.zero;
+        transform.position = new Vector2(Mathf.Round(transform.position.x), Mathf.Round(transform.position.y));
     }
    
 
@@ -158,18 +157,11 @@ public class Player : MonoBehaviour
                 Reverse();
                 break;
             case "Wall":
-                canMove = true;
+                Stop();
                 break;
         }
     }
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        switch (collision.gameObject.tag)
-        {
-            case "Wall":
-                break;
-        }
-    }
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         switch (collision.tag)
