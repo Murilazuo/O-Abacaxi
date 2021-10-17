@@ -93,21 +93,21 @@ public class Player : MonoBehaviour
     }
     private void Move()
     {
-        if (Input.GetKeyDown(inputUp) && currentDirection != Vector2.up)// && !wallColision[0].inColision)
+        if (Input.GetKeyDown(inputUp) && currentDirection != Vector2.up && !wallColision[0].inColision)
         {
             SetMove(Vector2.up);
         }
-        else if (Input.GetKeyDown(inputDown) && currentDirection != Vector2.down)// && !wallColision[1].inColision)
+        else if (Input.GetKeyDown(inputDown) && currentDirection != Vector2.down && !wallColision[1].inColision)
         {
             SetMove(Vector2.down);
 
         }
-        if (Input.GetKeyDown(inputLeft) && currentDirection != Vector2.left)// && !wallColision[2].inColision)
+        if (Input.GetKeyDown(inputLeft) && currentDirection != Vector2.left && !wallColision[2].inColision)
         {
             SetMove(Vector2.left);
 
         }
-        if (Input.GetKeyDown(inputRight) && currentDirection != Vector2.right) // && !wallColision[3].inColision)
+        if (Input.GetKeyDown(inputRight) && currentDirection != Vector2.right && !wallColision[3].inColision)
         {
             SetMove(Vector2.right);
 

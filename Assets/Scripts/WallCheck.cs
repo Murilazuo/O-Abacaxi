@@ -14,11 +14,9 @@ public class WallCheck : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Wall") && direction == playerDirection)
-        {
+        
             inColision = true;
-            player.Stop();
-        }
+        
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
