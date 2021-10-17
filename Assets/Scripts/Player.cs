@@ -7,7 +7,6 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private float baseSpeed;
     [SerializeField] private Vector2 speed;
-    [SerializeField] private WallCheck checkUp, checkDown, checkRight, checkLeft;
     [SerializeField] private bool up, down, right, left;
     [SerializeField] private WallCheck[] wallColision;
 
@@ -30,6 +29,7 @@ public class Player : MonoBehaviour
     FollowPlatform followPlatform;
     Animator anim;
     AudioSource audioSource;
+    [SerializeField] AudioClip canMoveAudio;
     KeyCode inputUp, inputDown, inputRight, inputLeft;
 
     
@@ -44,7 +44,7 @@ public class Player : MonoBehaviour
         rig = GetComponent<Rigidbody2D>();
         gameManager = GameManager.gameManager;
         anim = GetComponentInChildren<Animator>();
-
+        audioSource = GetComponent<AudioSource>();
 
         inputUp = KeyCode.W;
         inputDown = KeyCode.S;
@@ -97,24 +97,29 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(inputUp))
         {
             if (currentDirection != Vector2.up && !wallColision[0].inColision)
-            {
                 SetMove(Vector2.up);
-            }
-                else print("test");
+            else audioSource.PlayOneShot(canMoveAudio);
         }
-        else if (Input.GetKeyDown(inputDown) && currentDirection != Vector2.down && !wallColision[1].inColision)
+        else if (Input.GetKeyDown(inputDown))
         {
-            SetMove(Vector2.down);
+            if (currentDirection != Vector2.down && !wallColision[1].inColision)
+                SetMove(Vector2.down);
+            else audioSource.PlayOneShot(canMoveAudio);
+
 
         }
-        if (Input.GetKeyDown(inputLeft) && currentDirection != Vector2.left && !wallColision[2].inColision)
+        if (Input.GetKeyDown(inputLeft))
         {
-            SetMove(Vector2.left);
+            if(currentDirection != Vector2.left && !wallColision[2].inColision)
+                SetMove(Vector2.left);
+            else audioSource.PlayOneShot(canMoveAudio);
 
         }
-        if (Input.GetKeyDown(inputRight) && currentDirection != Vector2.right && !wallColision[3].inColision)
+        if (Input.GetKeyDown(inputRight))
         {
+            if(currentDirection != Vector2.right && !wallColision[3].inColision)
             SetMove(Vector2.right);
+            else audioSource.PlayOneShot(canMoveAudio);
 
         }
     }
