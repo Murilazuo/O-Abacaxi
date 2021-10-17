@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6346544378211821865}
   - component: {fileID: 8516282014526491433}
   - component: {fileID: 1184749483107743708}
-  - component: {fileID: 851707758344577179}
+  - component: {fileID: 6803739076609260733}
   m_Layer: 0
   m_Name: NextScene
   m_TagString: Untagged
@@ -97,8 +97,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &851707758344577179
-BoxCollider2D:
+--- !u!58 &6803739076609260733
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -110,16 +110,6 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0029322505, y: 0.001466155}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 0.753687, y: 0.7624841}
-  m_EdgeRadius: 0
+  m_Radius: 0.2

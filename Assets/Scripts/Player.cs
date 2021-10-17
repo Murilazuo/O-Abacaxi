@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     [SerializeField] private bool up, down, right, left;
     [SerializeField] private WallCheck[] wallColision;
 
+    [SerializeField] private GameObject trail;
+
     bool fall = false;
     //evento
     public delegate void ChangeStateAction();
@@ -51,8 +53,9 @@ public class Player : MonoBehaviour
         inputLeft= KeyCode.A;
         inputRight = KeyCode.D;
 
+        trail.SetActive(false);
         Spawn();
-
+        trail.SetActive(true);
 
 
     }
