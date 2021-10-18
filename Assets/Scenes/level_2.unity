@@ -13418,6 +13418,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4445767297096222506, guid: da3e910bac3eca04598a10e4e967c75c, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: bf3ccdbb36e6d114f869521713cd6cec, type: 3}
+    - target: {fileID: 7384540163677692973, guid: da3e910bac3eca04598a10e4e967c75c, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: bf3ccdbb36e6d114f869521713cd6cec, type: 3}
     - target: {fileID: 7384540163814821652, guid: da3e910bac3eca04598a10e4e967c75c, type: 3}
       propertyPath: m_Camera
       value: 
@@ -14646,9 +14654,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2179128345122962057, guid: 35c66bdc7f892454ea8674d404eb5d60, type: 3}
+      propertyPath: orthographic size
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 2179128345122962059, guid: 35c66bdc7f892454ea8674d404eb5d60, type: 3}
       propertyPath: m_Name
       value: Main Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179128345122962068, guid: 35c66bdc7f892454ea8674d404eb5d60, type: 3}
+      propertyPath: m_RefResolutionX
+      value: 384
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179128345122962068, guid: 35c66bdc7f892454ea8674d404eb5d60, type: 3}
+      propertyPath: m_RefResolutionY
+      value: 216
       objectReference: {fileID: 0}
     - target: {fileID: 2179128345122962070, guid: 35c66bdc7f892454ea8674d404eb5d60, type: 3}
       propertyPath: m_RootOrder

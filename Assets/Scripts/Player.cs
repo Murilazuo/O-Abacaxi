@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
     Animator anim;
     AudioSource audioSource;
     [SerializeField] AudioClip canMoveAudio;
+    [SerializeField] AudioClip checkPoint;
     KeyCode inputUp, inputDown, inputRight, inputLeft;
 
     
@@ -210,6 +211,7 @@ public class Player : MonoBehaviour
                 break;
             case "Nest":
                 gameManager.checkPooint = collision.gameObject.transform.position;
+                audioSource.PlayOneShot(checkPoint);
                 break;
             case "Ground":
                 return;
