@@ -12,13 +12,17 @@ public class TrapDoor : MonoBehaviour
     [SerializeField] bool openTrapDoor;
     private BoxCollider2D thisCollider;
     private Collider2D playerCollider;
+
+    private Animator anim;
     void Start()
     {
+        anim = GetComponent<Animator>();
         spr = GetComponent<SpriteRenderer>();
         thisCollider = GetComponent<BoxCollider2D>();
         playerCollider = FindObjectOfType<Player>().GetComponent<Collider2D>();
         TrapState();
     }
+    
     public void ChangerTrapState()
     {
         if (canOpenTrap) 
@@ -39,25 +43,30 @@ public class TrapDoor : MonoBehaviour
             }
             else 
             {
-                spr.sprite = open;
+                anim.SetBool("Blue", false);
                 gameObject.tag = "Hole";
             }
 
         }
         else
         {
-            spr.sprite = close;
+            anim.SetBool("Blue",true);
             gameObject.tag = "Untagged";
         }
     }
 
-    /*private void OnTriggerStay2D(Collider2D collision)
+    void TriggerOpenTrap()
     {
-        if (collision.gameObject.CompareTag("Player")) 
+        anim.SetTrigger("Open");
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player") && !anim.GetBool("Blue"))
         {
-                canOpenTrap = false;
+            TriggerOpenTrap();
         }
-    }*/
+    }
+
     /*private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -70,4 +79,5 @@ public class TrapDoor : MonoBehaviour
         yield return new WaitForSeconds(.15f);
         TrapState();
     }
+    
 }
