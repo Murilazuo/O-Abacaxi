@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CoinsManager : MonoBehaviour
 {
     public static bool[] coinCollect;
-    static bool firt = true;
     bool inCombo = false;
     public int comboCount = 0;
     public float time, endTime;
+    public static int idLevel = 0;
 
     [SerializeField] private float comboForce;
 
@@ -17,9 +18,9 @@ public class CoinsManager : MonoBehaviour
     private void Awake()
     {
         audioSourse = GetComponent<AudioSource>();
-        if (firt)
+        if (idLevel != SceneManager.GetActiveScene().buildIndex)
         {
-            firt = false;
+            idLevel = SceneManager.GetActiveScene().buildIndex;
             coinCollect = new bool[transform.childCount];
         }
 
