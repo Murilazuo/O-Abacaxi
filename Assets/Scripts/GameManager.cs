@@ -13,10 +13,7 @@ public class GameManager : MonoBehaviour
     public Vector2 checkPooint;
     private void Awake()
     {
-        if (gameManager == null) gameManager = this;
-        else Destroy(this.gameObject);
-
-        DontDestroyOnLoad(this.gameObject);
+        gameManager = this;
     }
     public static void ChangeState()
     {
