@@ -378,6 +378,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7384540163677692973, guid: da3e910bac3eca04598a10e4e967c75c, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: bf3ccdbb36e6d114f869521713cd6cec, type: 3}
     - target: {fileID: 7384540163814821653, guid: da3e910bac3eca04598a10e4e967c75c, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 0
@@ -1021,6 +1025,10 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 7db5c003c6b3b804c94832c996e4e2a6, type: 3}
     - target: {fileID: 1204684797813705695, guid: 488bc7867a068844997dd288313ffc0f, type: 3}
       propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015192414415492487, guid: 488bc7867a068844997dd288313ffc0f, type: 3}
+      propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9015192415039758816, guid: 488bc7867a068844997dd288313ffc0f, type: 3}
