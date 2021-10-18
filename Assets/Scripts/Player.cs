@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     [SerializeField] private bool xAxis;
 
     bool canChangeState = true;
-    public static bool dead = false;
+    bool dead = false;
     Door[] doors;
 
     [SerializeField] GameObject deathEfect;
