@@ -12,7 +12,7 @@ public class NextScene : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             ShowNewText.showNewText.NewText("Passou de Fase!");
-
+            collision.GetComponentInChildren<Animator>().SetTrigger("Win");
             StartCoroutine(nameof(NextLevel));
             Player player = collision.GetComponent<Player>();
             player.canMove = false;
