@@ -164,7 +164,6 @@ public class Player : MonoBehaviour
 
     void Reverse()
     {
-        anim.SetBool("xAxis", xAxis);
         GameManager.ChangeState();
     }
 

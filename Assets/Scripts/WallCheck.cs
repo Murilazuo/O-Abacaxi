@@ -29,10 +29,14 @@ public class WallCheck : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Wall"))
+        {
             inColision = false;
+            
+        }
         if (collision.CompareTag("Door"))
         {
             hasDoor = false;
+            inColision = false;
         }
 
     }
