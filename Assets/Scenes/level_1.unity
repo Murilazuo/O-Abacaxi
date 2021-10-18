@@ -378,14 +378,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7384540163677692973, guid: da3e910bac3eca04598a10e4e967c75c, type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: bf3ccdbb36e6d114f869521713cd6cec, type: 3}
-    - target: {fileID: 7384540163814821653, guid: da3e910bac3eca04598a10e4e967c75c, type: 3}
-      propertyPath: m_PresetInfoIsWorld
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7384540163814821655, guid: da3e910bac3eca04598a10e4e967c75c, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -420,18 +412,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7384540163814821655, guid: da3e910bac3eca04598a10e4e967c75c, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7384540163814821655, guid: da3e910bac3eca04598a10e4e967c75c, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7384540163814821655, guid: da3e910bac3eca04598a10e4e967c75c, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7384540163814821655, guid: da3e910bac3eca04598a10e4e967c75c, type: 3}
-      propertyPath: m_LocalScale.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7384540163814821655, guid: da3e910bac3eca04598a10e4e967c75c, type: 3}
@@ -1041,7 +1021,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9015192415039758816, guid: 488bc7867a068844997dd288313ffc0f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 9015192415039758816, guid: 488bc7867a068844997dd288313ffc0f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2465,18 +2445,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8419946979039820480, guid: fd18ef167212a1b499ce14c92cc284fe, type: 3}
-      propertyPath: m_Color.b
-      value: 0.7216981
-      objectReference: {fileID: 0}
-    - target: {fileID: 8419946979039820480, guid: fd18ef167212a1b499ce14c92cc284fe, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8419946979039820480, guid: fd18ef167212a1b499ce14c92cc284fe, type: 3}
-      propertyPath: m_Color.r
-      value: 0.82780063
-      objectReference: {fileID: 0}
     - target: {fileID: 8419946979039820481, guid: fd18ef167212a1b499ce14c92cc284fe, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -21291,11 +21259,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7201279526210644626, guid: d8ca407cf0945e7459eb8ced03eccdfe, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.820278
+      value: -12
       objectReference: {fileID: 0}
     - target: {fileID: 7201279526210644626, guid: d8ca407cf0945e7459eb8ced03eccdfe, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.044021
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7201279526210644626, guid: d8ca407cf0945e7459eb8ced03eccdfe, type: 3}
       propertyPath: m_LocalPosition.z
@@ -21328,6 +21296,14 @@ PrefabInstance:
     - target: {fileID: 7201279526210644626, guid: d8ca407cf0945e7459eb8ced03eccdfe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7201279526210644627, guid: d8ca407cf0945e7459eb8ced03eccdfe, type: 3}
+      propertyPath: startCheckPoint.x
+      value: -12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7201279526210644627, guid: d8ca407cf0945e7459eb8ced03eccdfe, type: 3}
+      propertyPath: startCheckPoint.y
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8ca407cf0945e7459eb8ced03eccdfe, type: 3}

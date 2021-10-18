@@ -56,6 +56,8 @@ public class Player : MonoBehaviour
         inputLeft= KeyCode.A;
         inputRight = KeyCode.D;
 
+        dead = false;
+
         trail.SetActive(false);
         Spawn();
         trail.SetActive(true);
@@ -71,10 +73,7 @@ public class Player : MonoBehaviour
     }
     void Spawn()
     {
-        if(gameManager.checkPooint != Vector2.zero)
-        {
-            transform.position = gameManager.checkPooint;
-        }
+        transform.position = GameManager.checkPooint;   
     }
     void Update()
     {
@@ -214,7 +213,10 @@ public class Player : MonoBehaviour
                 collision.GetComponent<Coin>().Collect();
                 break;
             case "Nest":
-                gameManager.checkPooint = collision.gameObject.transform.position;
+                print(GameManager.checkPooint);
+                GameManager.checkPooint = collision.gameObject.transform.position;
+                print(GameManager.checkPooint);
+
                 audioSource.PlayOneShot(checkPoint);
                 break;
             case "Ground":

@@ -2000,6 +2000,14 @@ PrefabInstance:
       propertyPath: checkPooint.y
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 7201279526210644627, guid: d8ca407cf0945e7459eb8ced03eccdfe, type: 3}
+      propertyPath: startCheckPoint.x
+      value: -12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7201279526210644627, guid: d8ca407cf0945e7459eb8ced03eccdfe, type: 3}
+      propertyPath: startCheckPoint.y
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8ca407cf0945e7459eb8ced03eccdfe, type: 3}
 --- !u!1001 &519579106
