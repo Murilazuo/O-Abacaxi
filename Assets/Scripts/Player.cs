@@ -78,6 +78,11 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
+        if (rig.velocity == Vector2.zero)
+        {
+            anim.SetBool("Move", true);
+        }
+        else anim.SetBool("Move", false);
 
         if (rig.velocity != Vector2.zero || !canMove)
         {
